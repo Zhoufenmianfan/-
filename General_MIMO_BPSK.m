@@ -7,7 +7,7 @@ function ber = General_MIMO_BPSK(Ns,Nd,snr_db)
 % BPSK只有I路
 
 % Number of symbols
-L = 10^5;
+L = 10^4;
 
 % Symbol energy
 E = 1;

@@ -1,5 +1,5 @@
 
-function ber = General_MIMO(Ns,Nd,snr_db)
+function ber = General_MIMO_QPSK(Ns,Nd,snr_db)
 % Ns发送端天线数量
 % Nd接收端天线数量
 % dB形式的SNR
@@ -7,7 +7,7 @@ function ber = General_MIMO(Ns,Nd,snr_db)
 
 
 % Number of symbols
-L = 10^5;
+L = 10^4;
 
 % Symbol energy
 E = 1;

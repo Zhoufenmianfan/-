@@ -10,7 +10,6 @@ for j = 1:rep
 
   for i = 1:length(snr)
       [ber(i,j)] = General_MIMO_BPSK(2,3,snr(i));
-
    end
 end
 
