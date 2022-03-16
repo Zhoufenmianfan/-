@@ -1,5 +1,5 @@
 
-function ber = General_MIMO_BPSK(Ns,Nd,snr_db)
+function ber = Copy_of_General_MIMO_BPSK(Ns,Nd,snr_db)
 % Ns发送端天线数量
 % Nd接收端天线数量
 % dB形式的SNR
@@ -22,7 +22,7 @@ sigma_v_d = sqrt(E*Ns/Nd/snr);
 
 % Channel parameters 
 
-H = complex(randn(Nd,Ns),randn(Nd,Ns))/sqrt(2);
+H = randn(Nd,Ns);
 % /sqrt(2)用于归一化,方差的性质var(x1+x2)=var(x1)+var(x2)+cov(x1,x2)
 % 这里为了保证H是一个方差为1的复随机数
 
@@ -31,7 +31,7 @@ H = complex(randn(Nd,Ns),randn(Nd,Ns))/sqrt(2);
 
 S = sqrt(E)*2*(randi(2,Ns,L)-1.5);
 % 生成实部都是-1 或 1的随机均匀分布数组，对应2点星座图，一个符号能量是平均为E/2，符号能量用共轭相乘表示
-V_d = sigma_v_d/sqrt(2)*complex(randn(Nd,L),randn(Nd,L));
+V_d = sigma_v_d/sqrt(2)*randn(Nd,L);
 % 产生噪声信号，同样也对噪声方差与归一化到sigma_v_d的值，平均的含义就是取期望均值E(X^2+Y^2),XY分别表示噪声的实部和虚部
 
 D = H*S + V_d;
@@ -48,7 +48,7 @@ nbe = 0;
 % 错误的比特个数
    % Counting the number of errors
    for i = 1:(L*Ns)
-      if sign(real(S_est(i))) ~= sign(real(S(i)))
+      if sign(S_est(i)) ~= sign(S(i))
          nbe = nbe + 1;
       end
     % 判断实部比特是否错误（相当于I路）
